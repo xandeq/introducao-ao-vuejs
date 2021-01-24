@@ -6,6 +6,19 @@
     <title>My test page</title>
   </head>
   <body>
-    <p>This is my page</p>
+    <div id="app">
+      {{ msg }}
+      <p v-bind:title="titulo">Teste com </p>
+    </div>
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+          msg: 'Iniciando com Vue JS',
+          titulo: 'Teste com V-BIND',
+          condicao: true
+        }
+      })
+    </script>
   </body>
 </html>
