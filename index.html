@@ -2,52 +2,26 @@
 <html>
   <head>
     <meta charset="utf-8" />
+    <title>Introdução ao VUE JS</title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <title>My test page</title>
   </head>
   <body>
     <div id="app">
-      {{ msg }}
-      <p v-bind:title="titulo">Teste com</p>
-      <p v-if="condicao">TESTE IF</p>
-      <p v-for="registro in registros">{{ registro.titulo }}</p>
-      <button v-if="!clicou" v-on:click="usuarioClicou">Salvar</button>
-      <button v-if="clicou" v-on:click="usuarioClicou">Aguarde...</button>
-      <p><input type="text" v-model="usuario.nome"></p>
-      <p> {{ usuario.nome }}</p>
+        <gui-titulo v-bind:titulo="meuTitulo"></gui-titulo>
     </div>
-    <script>
+    <script type="text/javascript">
+
+      Vue.component('gui-titulo', {
+          props:['titulo'],
+          template: '<h2>{{ titulo }}</h2>'
+      });
+
       var app = new Vue({
         el: "#app",
         data: {
-          msg: "Iniciando com Vue JS",
-          titulo: "Teste com V-BIND",
-          condicao: true,
-          registros: [
-            {
-              titulo: "registro 1",
-            },
-            {
-              titulo: "registro 2",
-            },
-            {
-              titulo: "registro 3",
-            },
-            {
-              titulo: "registro 4",
-            },
-            {
-              titulo: "registro 5",
-            },
-          ],
-          clicou: false,
-          usuario: {nome:""}
-        },
-        methods: {
-          usuarioClicou: function () {
-            this.clicou = !this.clicou;
-          },
-        },
+          meuTitulo: 'Esse é o título'
+        }
       });
     </script>
   </body>
