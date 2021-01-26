@@ -11,7 +11,14 @@
       <gui-titulo v-bind:titulo="meuTitulo"></gui-titulo>
       <input type="text" v-model="meuTitulo" />
 
-      <gui-tabela v-bind:titulos="['Nome','Descrição']" v-bind:registros="registros"></gui-tabela>
+      <gui-tabela
+        v-bind:titulos="['Nome','Descrição']"
+        v-bind:registros="registros"
+      ></gui-tabela>
+
+      <p v-once>{{ meuTitulo }}</p>
+      <p v-html="html"></p>
+
     </div>
     <script type="text/javascript">
       Vue.component("gui-titulo", {
@@ -41,10 +48,11 @@
         data: {
           meuTitulo: "Esse é o título",
           registros: [
-            {titulo: 'Titulo1', descricao:'Descricao1', link: 'Link1'},
-            {titulo: 'Titulo2', descricao:'Descricao2', link: 'Link1'},
-            {titulo: 'Titulo3', descricao:'Descricao3', link: 'Link1'},
-          ]
+            { titulo: "Titulo1", descricao: "Descricao1", link: "Link1" },
+            { titulo: "Titulo2", descricao: "Descricao2", link: "Link1" },
+            { titulo: "Titulo3", descricao: "Descricao3", link: "Link1" },
+          ],
+          html: '<a href="#">Aqui tem um link</a>'
         },
       });
     </script>
