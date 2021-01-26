@@ -8,20 +8,44 @@
   </head>
   <body>
     <div id="app">
-        <gui-titulo v-bind:titulo="meuTitulo"></gui-titulo>
+      <gui-titulo v-bind:titulo="meuTitulo"></gui-titulo>
+      <input type="text" v-model="meuTitulo" />
+
+      <gui-tabela v-bind:titulos="['Nome','Descrição']" v-bind:registros="registros"></gui-tabela>
     </div>
     <script type="text/javascript">
+      Vue.component("gui-titulo", {
+        props: ["titulo"],
+        template: "<h2>{{ titulo }}</h2>",
+      });
 
-      Vue.component('gui-titulo', {
-          props:['titulo'],
-          template: '<h2>{{ titulo }}</h2>'
+      Vue.component("gui-tabela", {
+        props: ["titulos", "registros"],
+        template:
+          '<table style="width: 100%; border: solid 1px #C0C0C0">' +
+          "<thead>" +
+          "<tr>" +
+          "<th v-for='titulo in titulos'>{{ titulo }}</th>" +
+          "</tr>" +
+          "</thead>" +
+          "<tbody>" +
+          "<tr v-for='registro in registros'>" +
+          "<td v-for='item in registro'>{{item}}</td>" +
+          "</tr>" +
+          "</tbody>" +
+          "</table>",
       });
 
       var app = new Vue({
         el: "#app",
         data: {
-          meuTitulo: 'Esse é o título'
-        }
+          meuTitulo: "Esse é o título",
+          registros: [
+            {titulo: 'Titulo1', descricao:'Descricao1', link: 'Link1'},
+            {titulo: 'Titulo2', descricao:'Descricao2', link: 'Link1'},
+            {titulo: 'Titulo3', descricao:'Descricao3', link: 'Link1'},
+          ]
+        },
       });
     </script>
   </body>
