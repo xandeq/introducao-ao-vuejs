@@ -13,8 +13,8 @@
       <p v-for="registro in registros">{{ registro.titulo }}</p>
       <button v-if="!clicou" v-on:click="usuarioClicou">Salvar</button>
       <button v-if="clicou" v-on:click="usuarioClicou">Aguarde...</button>
-      <p><input type="text" v-model="usuario.nome"></p>
-      <p> {{ usuario.nome }}</p>
+      <p><input type="text" v-model="usuario.nome" /></p>
+      <p>{{ usuario.nome }}</p>
     </div>
     <script>
       var app = new Vue({
@@ -41,7 +41,7 @@
             },
           ],
           clicou: false,
-          usuario: {nome:""}
+          usuario: { nome: "" },
         },
         methods: {
           usuarioClicou: function () {

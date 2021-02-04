@@ -18,7 +18,7 @@
 
       <p v-once>{{ meuTitulo }}</p>
       <p v-html="html"></p>
-
+      <p>{{ 28.4394853495438 | TrataValor }}</p>
     </div>
     <script type="text/javascript">
       Vue.component("gui-titulo", {
@@ -52,7 +52,12 @@
             { titulo: "Titulo2", descricao: "Descricao2", link: "Link1" },
             { titulo: "Titulo3", descricao: "Descricao3", link: "Link1" },
           ],
-          html: '<a href="#">Aqui tem um link</a>'
+          html: '<a href="#">Aqui tem um link</a>',
+        },
+        filters: {
+          TrataValor: function (valor) {
+            return "R$ " + valor.toFixed(2).replace(".", ",");
+          },
         },
       });
     </script>
